@@ -39,7 +39,7 @@ def app():
   model_name = "distilbert-base-cased-squad2"
   tokenizer_name = model_name
 
-  access_token = os.environ.get("API_key")
+  access_token = st.secrets["API_key"]
   # Load pre-trained model and tokenizer
   tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
   model = AutoModelForQuestionAnswering.from_pretrained(model_name, token=access_token)
