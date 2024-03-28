@@ -38,8 +38,8 @@ def answer_question(document, question):
   # Decode predicted tokens back to answer text
   answer_start = torch.argmax(start_scores)
   answer_end = torch.argmax(end_scores) + 1
-  #answer = tokenizer.convert_tokens_to_strings(inputs["input_ids"][0][answer_start:answer_end])
-  answer = tokenizer.decode(inputs["input_ids"][0][answer_start:answer_end], skip_special_tokens=True)
+  answer = tokenizer.convert_tokens_to_strings(inputs["input_ids"][0][answer_start:answer_end])
+  #answer = tokenizer.decode(inputs["input_ids"][0][answer_start:answer_end], skip_special_tokens=True)
 
   # Return answer info as a dictionary
   return {"answer": answer[0], "start": answer_start, "end": answer_end}
