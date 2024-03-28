@@ -1,6 +1,17 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 
+  # Model and tokenizer names (you can choose a different model from Hugging Face)
+  model_name = "jysh1023/distilbert-base-cased-squad-v2"
+  tokenizer_name = model_name
+
+  access_token = st.secrets["API_key"]
+  st.write(access_token)
+
+  # Load pre-trained model and tokenizer
+  tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
+  model = AutoModelForQuestionAnswering.from_pretrained(model_name, token=access_token)
+
 def answer_question(document, question):
   """
   Answers a question about the given document using the loaded model.
@@ -30,18 +41,6 @@ def answer_question(document, question):
   return {"answer": answer[0], "start": answer_start, "end": answer_end}
 
 def app():
-
-  # Model and tokenizer names (you can choose a different model from Hugging Face)
-  model_name = "jysh1023/distilbert-base-cased-squad-v2"
-  tokenizer_name = model_name
-
-  access_token = st.secrets["API_key"]
-  st.write(access_token)
-
-  # Load pre-trained model and tokenizer
-  tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
-  model = AutoModelForQuestionAnswering.from_pretrained(model_name, token=access_token)
-
 
   st.title("Document Question Answering")
 
