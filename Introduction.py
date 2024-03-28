@@ -37,12 +37,12 @@ def answer_question(document, question):
 def app():
 
   # Model and tokenizer names (you can choose a different model from Hugging Face)
-  model_name = "distilbert-base-cased-squad2"
+  model_name = "distilbert-base-cased-squad"
   tokenizer_name = model_name
 
   access_token = st.secrets["API_key"]
   st.write(access_token)
-  
+
   # Load pre-trained model and tokenizer
   tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
   model = AutoModelForQuestionAnswering.from_pretrained(model_name, token=access_token)
