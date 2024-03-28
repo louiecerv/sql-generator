@@ -7,9 +7,10 @@ from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 model_name = "distilbert-base-cased-squad2"
 tokenizer_name = model_name
 
+access_token = os.environ.get("API_key")
 # Load pre-trained model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
-model = AutoModelForQuestionAnswering.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
+model = AutoModelForQuestionAnswering.from_pretrained(model_name, token=access_token)
 
 
 def answer_question(document, question):
@@ -41,7 +42,7 @@ def answer_question(document, question):
   return {"answer": answer[0], "start": answer_start, "end": answer_end}
 
 def app():
-  access_token = os.environ.get("API_key")
+
   st.title("Document Question Answering")
 
   # Input fields for document and question
