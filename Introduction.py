@@ -30,6 +30,9 @@ def answer_question(document, question):
   # Perform QA with the model
   outputs = model(**inputs)
 
+  if len(outputs) <= 0:
+    return
+  
   # Get the predicted start and end token positions of the answer
   start_scores, end_scores = outputs.start_logits, outputs.end_logits
 
