@@ -41,24 +41,25 @@ def answer_question(document, question):
   return {"answer": answer[0], "start": answer_start, "end": answer_end}
 
 def app():
-st.title("Document Question Answering")
+  access_token = os.environ.get("API_key")
+  st.title("Document Question Answering")
 
-# Input fields for document and question
-document = st.text_area("Enter Document Text Here")
-question = st.text_input("Ask a question about the document")
+  # Input fields for document and question
+  document = st.text_area("Enter Document Text Here")
+  question = st.text_input("Ask a question about the document")
 
-# Button to trigger question answering
-if st.button("Answer Question"):
-  if document and question:
-    # Call answer_question function and get answer info
-    answer_info = answer_question(document, question)
-    answer = answer_info["answer"]
+  # Button to trigger question answering
+  if st.button("Answer Question"):
+    if document and question:
+      # Call answer_question function and get answer info
+      answer_info = answer_question(document, question)
+      answer = answer_info["answer"]
 
-    # Display the answer
-    st.write(f"Answer: {answer}")
-  else:
-    st.warning("Please provide both document text and a question.")
+      # Display the answer
+      st.write(f"Answer: {answer}")
+    else:
+      st.warning("Please provide both document text and a question.")
 
 #run the app
 if __name__ == "__main__":
-    app()
+  app()
