@@ -35,6 +35,7 @@ def answer_question(document, question):
   return {"answer": answer[0], "start": answer_start, "end": answer_end}
 
 def app():
+  st.write(access_token)
   # Model and tokenizer names (you can choose a different model from Hugging Face)
   model_name = "distilbert-base-cased-squad2"
   tokenizer_name = model_name
