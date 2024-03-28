@@ -3,7 +3,7 @@ from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 import torch
 
 # Model and tokenizer names (you can choose a different model from Hugging Face)
-model_name = "rajpurkar/squad_v2"
+model_name = "distilbert/distilbert-base-cased-distilled-squad"
 tokenizer_name = model_name
 
 access_token = st.secrets["API_key"]
