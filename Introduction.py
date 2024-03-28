@@ -32,7 +32,7 @@ def answer_question(document, question):
 def app():
 
   # Model and tokenizer names (you can choose a different model from Hugging Face)
-  model_name = "tinyroberta-squad2"
+  model_name = "distilbert-base-cased-squad2"
   tokenizer_name = model_name
 
   access_token = st.secrets["API_key"]
