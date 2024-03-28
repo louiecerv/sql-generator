@@ -1,10 +1,5 @@
 import streamlit as st
-import os
-
-# Import libraries
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
-
-
 
 def answer_question(document, question):
   """
