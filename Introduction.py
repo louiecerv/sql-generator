@@ -7,7 +7,6 @@ model_name = "distilbert/distilbert-base-cased-distilled-squad"
 tokenizer_name = model_name
 
 access_token = st.secrets["API_key"]
-st.write(access_token)
 
 # Load pre-trained model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
