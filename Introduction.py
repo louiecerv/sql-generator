@@ -1,5 +1,6 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
+import torch
 
 # Model and tokenizer names (you can choose a different model from Hugging Face)
 model_name = "jysh1023/distilbert-base-cased-squad-v2"
