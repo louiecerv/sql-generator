@@ -4,14 +4,6 @@ import os
 # Import libraries
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 
-# Model and tokenizer names (you can choose a different model from Hugging Face)
-model_name = "distilbert-base-cased-squad2"
-tokenizer_name = model_name
-
-access_token = os.environ.get("API_key")
-# Load pre-trained model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
-model = AutoModelForQuestionAnswering.from_pretrained(model_name, token=access_token)
 
 
 def answer_question(document, question):
@@ -43,6 +35,15 @@ def answer_question(document, question):
   return {"answer": answer[0], "start": answer_start, "end": answer_end}
 
 def app():
+  # Model and tokenizer names (you can choose a different model from Hugging Face)
+  model_name = "distilbert-base-cased-squad2"
+  tokenizer_name = model_name
+
+  access_token = os.environ.get("API_key")
+  # Load pre-trained model and tokenizer
+  tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, token=access_token)
+  model = AutoModelForQuestionAnswering.from_pretrained(model_name, token=access_token)
+
 
   st.title("Document Question Answering")
 
