@@ -6,12 +6,12 @@ openai.api_key = st.secrets["API_key"]
 
 def generate_response(question, context):
     response = openai.Completion.create(
-      engine="text-davinci-002",
-      prompt=question + "\nContext: " + context + "\nQ:",
-      temperature=0.7,
-      max_tokens=150
+        model="text-davinci-002",
+        prompt=question + "\nContext: " + context + "\nQ:",
+        temperature=0.7,
+        max_tokens=150
     )
-    return response.choices[0].text.strip()
+    return response['choices'][0]['text'].strip()
 
 def app():
     st.title("OpenAI Text Generation App")
@@ -30,7 +30,6 @@ def app():
             st.write(response)
         else:
             st.error("Please enter both question and context.")
-
 
 #run the app
 if __name__ == "__main__":
