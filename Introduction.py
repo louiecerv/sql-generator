@@ -1,9 +1,6 @@
 import streamlit as st
 import openai
 
-client = OpenAI(
-  openai.api_key = st.secrets["API_key"]
-)
 
 from openai import AsyncOpenAI
 client = AsyncOpenAI()
@@ -14,6 +11,7 @@ def generate_response(question, context):
 
 
 def app():
+    client = OpenAI(openai.api_key = st.secrets["API_key"])
     st.title("OpenAI Text Generation App")
     
     # Text input for user question
