@@ -4,13 +4,13 @@ import openai
 
 from openai import AsyncOpenAI
 
-def generate_response(question, context):
+async def generate_response(question, context):
   client = AsyncOpenAI()
   completion = await client.chat.completions.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": question}, {"role": "system", "content": context}])
   return completion.choices[0].message.content
 
 
-def app():
+async def app():
     client = OpenAI(openai.api_key == st.secrets["API_key"])
     st.title("OpenAI Text Generation App")
     
@@ -31,4 +31,5 @@ def app():
 
 #run the app
 if __name__ == "__main__":
-  app()
+    import asyncio
+    asyncio.run(app())
