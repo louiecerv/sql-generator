@@ -1,16 +1,15 @@
 import streamlit as st
 import openai
 
-# Set your OpenAI API key
-openai.api_key = st.secrets["API_key"]
+client = OpenAI(
+  openai.api_key = st.secrets["API_key"]
+)
+
+from openai import AsyncOpenAI
+client = AsyncOpenAI()
 
 def generate_response(question, context):
-    openai.organization = "West Visayas State University"  # Set your OpenAI organization if applicable
-    model_engine = "text-davinci-4"  # Use the latest model engine
-
-    response = openai.ChatCompletion.create(
-        model=model_engine,
-        messages=[
+  completion = await client.chat.completions.create(model="gpt-3.5-turbo", messages=[
             {
                 "role": "system",
                 "content": "Question: " + question,
@@ -18,15 +17,12 @@ def generate_response(question, context):
             {
                 "role": "system",
                 "content": "Context: " + context,
-            }
-        ],
-        max_tokens=150,
-        n=1,
-        stop=None,  # Allow for longer responses if needed
-        temperature=0.7
-    )
+            }])
 
-    return response.choices[0].message.content.strip()
+    return completion.choices[0].message.content
+
+
+
 
 def app():
     st.title("OpenAI Text Generation App")
