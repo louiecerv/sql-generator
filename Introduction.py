@@ -5,13 +5,28 @@ import openai
 openai.api_key = st.secrets["API_key"]
 
 def generate_response(question, context):
-    response = openai.Completion.create(
-        model="text-davinci-002",
-        prompt=question + "\nContext: " + context + "\nQ:",
-        temperature=0.7,
-        max_tokens=150
+    openai.organization = "West Visayas State University"  # Set your OpenAI organization if applicable
+    model_engine = "text-davinci-4"  # Use the latest model engine
+
+    response = openai.ChatCompletion.create(
+        model=model_engine,
+        messages=[
+            {
+                "role": "system",
+                "content": "Question: " + question,
+            },
+            {
+                "role": "system",
+                "content": "Context: " + context,
+            }
+        ],
+        max_tokens=150,
+        n=1,
+        stop=None,  # Allow for longer responses if needed
+        temperature=0.7
     )
-    return response['choices'][0]['text'].strip()
+
+    return response.choices[0].message.content.strip()
 
 def app():
     st.title("OpenAI Text Generation App")
