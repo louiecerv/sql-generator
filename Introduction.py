@@ -3,6 +3,7 @@ import openai
 
 
 from openai import AsyncOpenAI
+from openai import OpenAI
 
 async def generate_response(question, context):
   client = AsyncOpenAI()
