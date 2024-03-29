@@ -6,7 +6,7 @@ from openai import AsyncOpenAI
 from openai import OpenAI
 
 async def generate_response(question, context):
-  client = AsyncOpenAI(openai.api_key = st.secrets["API_key"])
+  client = AsyncOpenAI()
   completion = await client.chat.completions.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": question}, {"role": "system", "content": context}])
   return completion.choices[0].message.content
 
