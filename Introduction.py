@@ -12,7 +12,7 @@ async def generate_response(question, context):
 
 
 async def app():
-    client = OpenAI(openai.api_key = st.secrets["API_key"])
+    client = OpenAI(st.secrets["API_key"])
     st.title("OpenAI Text Generation App")
     
     # Text input for user question
