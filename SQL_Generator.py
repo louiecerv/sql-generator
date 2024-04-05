@@ -6,23 +6,30 @@ from openai import OpenAI
 import os
 
 
+
 def get_api_key():
   """
   Retrieves the API key based on the execution environment.
-
   Returns:
       str: The API key value.
+      Raises:
+          RuntimeError: If API key cannot be retrieved from either environment variable or Streamlit secrets.
   """
   try:
-    # Attempt to get the API key from Streamlit secrets (assuming cloud execution)      
-    return os.getenv("API_KEY")
-  except ImportError:
-    # If Streamlit secrets are unavailable, fallback to environment variable (local execution)
-    return st.secrets["API_key"]
+      # Attempt to get API key from environment variable (local or cloud execution)
+      return os.getenv("API_KEY")
+  except KeyError:
+      try:
+          # Fallback to Streamlit secrets (cloud execution)
+          return st.secrets["API_key"]
+      except (KeyError, AttributeError):
+          # Secrets not set or Streamlit module not found
+          raise RuntimeError("API key not found in environment variable or Streamlit secrets.") from None
+
 
 
 client = AsyncOpenAI(
-    # This is the default and can be omitted
+    # This is the default and can be omitted    
     api_key=get_api_key(),
 )
 
