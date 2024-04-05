@@ -1,7 +1,6 @@
 import streamlit as st
 import openai
 
-
 from openai import AsyncOpenAI
 from openai import OpenAI
 
@@ -59,7 +58,8 @@ async def app():
    language, bridging the gap between non-technical users and complex database systems. It lays the 
    foundation for future advancements in AI-driven data analytics, making data access and analysis 
    more intuitive and efficient."""
-  st.write(text)
+  with st.expander("Click her for more information."):
+    st.write(text)
 
   # Define your default text
   dbschema = """CREATE TABLE products (
@@ -133,7 +133,6 @@ async def app():
   SQL statement that will statisfy the question. The SQL must use only the data defined in the schema. 
   Return only the SQL statement without any explanation or other outputs: """ + user_schema
 
-  
   # Button to generate response
   if st.button("Generate SQL"):
       if question and context:
