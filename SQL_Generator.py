@@ -23,7 +23,7 @@ def get_api_key():
 
 client = AsyncOpenAI(
     # This is the default and can be omitted
-    api_key=get_api_key()),
+    api_key=get_api_key(),
 )
 
 async def generate_response(question, context):
