@@ -15,10 +15,11 @@ def get_api_key():
   """
   try:
     # Attempt to get the API key from Streamlit secrets (assuming cloud execution)      
-    return st.secrets["API_key"]
+    return os.getenv("API_KEY")
   except ImportError:
     # If Streamlit secrets are unavailable, fallback to environment variable (local execution)
-    return os.getenv("API_KEY")
+    return st.secrets["API_key"]
+
 
 client = AsyncOpenAI(
     # This is the default and can be omitted
