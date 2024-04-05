@@ -126,7 +126,7 @@ async def app():
   # Display whether the checkbox is checked or not
   if checkbox_value:
     # Ask the user to input text
-    question = st.text_input("Please enter some text:")
+    question = st.text_input("Please input a data analytics question/request in natural language:")
 
   # Text area input for the context
   context = """Follow the instructions exactly. Using the following database schema,give me MYSQL
