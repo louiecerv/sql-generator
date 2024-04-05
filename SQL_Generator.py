@@ -13,12 +13,11 @@ async def generate_response(question, context):
   return completion.choices[0].message.content
 
 async def app():
-    # Code to be executed on Streamlit Cloud
-    client = AsyncOpenAI(
-        # This is the default and can be omitted    
-        api_key=st.secrets["API_key"],
-    )
-
+  # Code to be executed on Streamlit Cloud
+  client = AsyncOpenAI(
+      # This is the default and can be omitted    
+      api_key=st.secrets["API_key"],
+  )
 
   st.subheader("AI-Driven SQL Query Generator")
 
