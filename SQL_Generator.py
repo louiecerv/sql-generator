@@ -19,6 +19,7 @@ async def generate_response(question, context):
 
 
 async def app():
+  st.write(os.environ.get('API_KEY'))
   st.subheader("AI-Driven SQL Query Generator")
 
   text = """Prof. Louie F. Cervantes, M. Eng. (Information Engineering) \n
