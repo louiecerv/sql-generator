@@ -26,6 +26,8 @@ async def app():
   College of Information and Communications Technology
   West Visayas State University"""
   st.text(text)
+
+  st.image("ai-sql.jpg", caption="AI-Driven Analytics")
   
   text = """
   \nThe AI-Driven SQL Query Generator is a Streamlit web application that showcases the capabilities of 
