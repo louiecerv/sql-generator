@@ -14,9 +14,8 @@ def get_api_key():
       str: The API key value.
   """
   try:
-    # Attempt to get the API key from Streamlit secrets (assuming cloud execution)
-    from streamlit.secrets import API_key
-    return API_KEY
+    # Attempt to get the API key from Streamlit secrets (assuming cloud execution)      
+    return st.secrets["API_key"]
   except ImportError:
     # If Streamlit secrets are unavailable, fallback to environment variable (local execution)
     return os.getenv("API_KEY")
