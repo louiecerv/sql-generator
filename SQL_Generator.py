@@ -20,7 +20,7 @@ async def generate_response(question, context):
 
 async def app():
   st.subheader("AI-Driven SQL Query Generator")
-  
+
   text = """Prof. Louie F. Cervantes, M. Eng. (Information Engineering) \n
   CCS 229 - Intelligent Systems
   Department of Computer Science
@@ -60,7 +60,6 @@ async def app():
    foundation for future advancements in AI-driven data analytics, making data access and analysis 
    more intuitive and efficient."""
   st.write(text)
-
 
   # Define your default text
   dbschema = """CREATE TABLE products (
@@ -120,7 +119,15 @@ async def app():
   )
 
   question = selected_option
-  
+
+  # Create a checkbox and store its value
+  checkbox_value = st.checkbox("Input your own query in natural language")
+
+  # Display whether the checkbox is checked or not
+  if checkbox_value:
+    # Ask the user to input text
+    question = st.text_input("Please enter some text:")
+
   # Text area input for the context
   context = """Follow the instructions exactly. Using the following database schema,give me MYSQL
   SQL statement that will statisfy the question. The SQL must use only the data defined in the schema. 
