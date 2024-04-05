@@ -5,6 +5,12 @@ from openai import AsyncOpenAI
 from openai import OpenAI
 import os
 
+# Code to be executed on Streamlit Cloud
+client = AsyncOpenAI(
+    # This is the default and can be omitted    
+    api_key=st.secrets["API_key"],
+)
+
 async def generate_response(question, context):
   model = "gpt-4-0125-preview"
   #model - "gpt-3.5-turbo"
@@ -13,11 +19,6 @@ async def generate_response(question, context):
   return completion.choices[0].message.content
 
 async def app():
-  # Code to be executed on Streamlit Cloud
-  client = AsyncOpenAI(
-      # This is the default and can be omitted    
-      api_key=st.secrets["API_key"],
-  )
 
   st.subheader("AI-Driven SQL Query Generator")
 
