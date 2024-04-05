@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit.script_run_context import get_script_run_ctx
+from streamlit.runtime.scriptrunner.script_run_context import get_script_run_ctx
 import openai
 
 from openai import AsyncOpenAI
