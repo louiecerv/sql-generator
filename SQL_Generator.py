@@ -3,10 +3,11 @@ import openai
 
 from openai import AsyncOpenAI
 from openai import OpenAI
+import os
 
 client = AsyncOpenAI(
     # This is the default and can be omitted
-    api_key=st.secrets["API_key"],
+    api_key=os.environ.get('API_KEY'),
 )
 
 async def generate_response(question, context):
